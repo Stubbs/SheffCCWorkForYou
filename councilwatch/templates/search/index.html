@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Search for your councillors</h1>
+
+<p>Enter your postcode to search for a list of your councillors</p>
+
+<form method="POST" action="/search/">
+<fieldset>
+<label>Enter your postcode</label><input name="postcode" id="postcode" type="text"/>
+<input type="submit" value="submit" />
+</fieldset>
+</form>
+
+{% if not_found %}
+	<h2>Could not find your postcode</h2>
+	<p>We're sorry, but we wouldn't find the postcode you entered. Currently, 
+		<i>Sheffield County Council Works for You</i> only covers Sheffield County Council</p>
+{% else %}
+	{% if results %}
+	<h2>Your councillors for {{ ward.name }}</h2>
+	<ul>
+	{% for coun in councillors %}
+	<li>{{ coun.name }} {{ coun.party }}</li>
+	{% endfor %}
+	</ul>
+	<a href="/mail/">Mail your councillors</a>
+	{% endif %}
+{% endif %}
+{% endblock %}

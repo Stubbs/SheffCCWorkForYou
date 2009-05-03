@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Email for your councillors</h1>
+
+<p>Your message has been sent to {% for councillor in councillors %}{{ councillor.name }}, {% endfor %}</p>
+
+<p>Thanks for using Sheffield County Council Work for You, we hope it illustrates how much simpler things are when a site is designed to do one thing, and do it well.</p>
+
+<p>We will contact you again in a few weeks to see if your question was answered, though this is purely for statistics, we will not send your message to your councillors again</p>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Email for your councillors</h1>
+
+<p>Use this page to email your councillors on any issues but here are some guidelines to help you:</p>
+<ul>
+	<li>Please be polite, to the point and concise.</li>
+	<li>Use you're own words, we will block any cut and pasted emails.</li>
+	<li>Your local councillor can help with
+		<ul><li>Local services</li>
+			<li>Planning, transport and roads (but not trunk roads or the motorway)</li>
+			<li>Public rights of way</li>
+			<li>education</li>
+			<li>social services</li>
+			<li>libraries</li></ul>
+	</li>
+</ul>
+
+<form method="POST" action="/mail/">
+<fieldset>
+	{% if success %}
+	<div class="success">
+	<p>Your email has been saved and you have been sent a confirmation email to the address you supplied.</p>
+	<p>You must click on the link in that email before your message is delivered to your councillors</p>
+	</div>
+	{% else %}
+	<p>Once you have filled in the form, we'll send an email with a confirmation link that you 
+		must click in order to deliver your message, so you must make sure the email address below is correct</p>
+
+		{{ email_form.as_ul }}
+
+		<input type="submit" value="submit" />
+	{% endif %}
+</fieldset>
+</form>
+
+{% endblock %}
